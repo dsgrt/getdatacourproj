@@ -59,12 +59,15 @@ library(plyr)
 table3 <- join(table2, actlabels, by = "activity")
 table3 <- table3[c(1, 2, 82, 3:81)]
 
+
 ## Write table with above data to working directory
 write.table(table3, file = "../actandvarall.txt", row.names = FALSE)
+
 
 ## Use group_by() and summarise_each() to get averages for each activity and subject
 table4 <- group_by(table3, subject, activity, actname)
 table4 <- table4 %>% summarise_each(funs(mean))
+
 
 ## Write table with above (summarized) data to working directory
 write.table(table4, file = "../actandvarmeans.txt", row.names = FALSE)
